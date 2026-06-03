@@ -1,0 +1,15 @@
+name: test do bagui
+
+on:
+  push: 
+    branches: [ "main" ]
+permissions:
+  contents: read
+  pages: write
+  id_token: write
+
+jobs:
+  validacao-html:
+  # continua na proxima aula
+  deploy-producao:
+  # continua na proxima aula
