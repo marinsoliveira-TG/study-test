@@ -3,6 +3,7 @@ name: test do bagui
 on:
   push: 
     branches: [ "main" ]
+
 permissions:
   contents: read
   pages: write
@@ -10,6 +11,34 @@ permissions:
 
 jobs:
   validacao-html:
-  # continua na proxima aula
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Baixar código
+      uses: actions/checkout@v4
+
+    - name: configurar Node.js (ambiente de linter)
+      uses: acttions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Validar arquivos html
+      run: htmlhint "index.html"
+
+  # etapa de CD
   deploy-producao:
-  # continua na proxima aula
+    needs: validacao-html
+    runs on: ubuntu-latest
+    steps:
+    - name: Baixar código
+      uses: actions/checkout@v4
+
+    - name: Configurar o Github pages
+      uses: actions/configure-pages@v4
+
+    - name: Compactar artefatos do Site
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+
+    - name: Publicar no Github pages
+      uses: actions/deploy-pages@v4
