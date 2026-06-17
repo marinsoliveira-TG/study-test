@@ -27,21 +27,6 @@ jobs:
     - name: Validar arquivos html
       run: htmlhint "index.html"
 
-jobs:
-  validacao-html2:
-    runs-on: ubuntu-latest
-    steps: 
-    - name: Baixar código
-      uses: actions/checkout@v4
-
-    - name: configurar Node.js (ambiente de linter)
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18
-
-    - name: Instalar validador html
-      run: npm install -g htmlhint
-
     - name: Validar arquivos html
       run: htmlhint "page2.html"
 
