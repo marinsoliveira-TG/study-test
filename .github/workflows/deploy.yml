@@ -27,6 +27,9 @@ jobs:
     - name: Validar arquivos html
       run: htmlhint "index.html"
 
+    - name: Validar arquivos html2
+      run: htmlhint "page2.html"
+
   # etapa de CD
   deploy-producao:
     needs: validacao-html
