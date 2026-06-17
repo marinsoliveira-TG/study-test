@@ -30,7 +30,7 @@ jobs:
   # etapa de CD
   deploy-producao:
     needs: validacao-html
-    runs on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Baixar código
       uses: actions/checkout@v4
